@@ -15,7 +15,6 @@
 		  <groupId>com.pcloud.sdk</groupId>
 		  <artifactId>java-core</artifactId>
 		  <version>1.4.0</version>
-		  <type>pom</type>
 		</dependency>
 	</dependencies>
 
