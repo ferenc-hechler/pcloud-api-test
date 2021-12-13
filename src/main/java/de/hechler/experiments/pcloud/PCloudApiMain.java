@@ -56,7 +56,8 @@ public class PCloudApiMain {
 		for (RemoteEntry entry : folder.children()) {
 			if (entry.isFile()) {
 				RemoteFile remoteFile = entry.asFile();
-				System.out.println(remoteFile.name() + "->" + remoteFile.hash());
+				System.out.println(remoteFile.name() + "["+remoteFile.id()+"]" + "->" + remoteFile.hash());
+				System.out.println(Long.parseLong(remoteFile.id().replaceFirst("^f", "")));
 				UserInfo userInfo = apiClient.getUserInfo().execute();
 				System.out.println(userInfo.email());
 			}

@@ -44,3 +44,55 @@ Response:
   "access_token": "..."
 }
 ```
+
+# checksum file
+
+
+```
+<fileid> = remoteFile.id().substr(1) ["f8631891410" -> "8631891410"]
+```
+
+```
+https://eapi.pcloud.com/checksumfile?fileid=8631891410
+  Authorization: Bearer <access_token>
+  Accept: application/json
+```
+
+response:
+
+```
+{
+"result": 0,
+"sha256": "a197aca63cf3da125648f26b795a2ea300622422433d8e369c2d7ab2ec48b4aa",
+"sha1": "25ed7cacb92df5ad84485488b99b4d2d881a0101",
+"metadata":{
+"name": "Getting started with pCloud.pdf",
+"created": "Sun, 12 Dec 2021 18:47:18 +0000",
+"thumb": false,
+"modified": "Sun, 12 Dec 2021 18:47:18 +0000",
+"isfolder": false,
+"fileid": 8631891410,
+"hash": 5484734392585590647,
+"comments": 0,
+"category": 4,
+"id": "f8631891410",
+"isshared": false,
+"ismine": true,
+"size": 16371465,
+"parentfolderid": 0,
+"contenttype": "application/pdf",
+"icon": "document"
+}
+}
+```
+
+
+## about simple hash
+
+https://docs.pcloud.com/structures/metadata.html
+
+```
+hash int 64 bit integer representing hash of the contents of the file 
+            can be used to determine if two files are the same or to 
+            monitor file contents for changes. Present only for files.
+```
