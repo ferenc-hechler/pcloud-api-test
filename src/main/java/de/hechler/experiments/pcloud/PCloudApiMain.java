@@ -2,6 +2,7 @@ package de.hechler.experiments.pcloud;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 
 import com.pcloud.sdk.ApiClient;
 import com.pcloud.sdk.ApiError;
@@ -55,9 +56,20 @@ public class PCloudApiMain {
 	private static void printFolder(RemoteFolder folder) throws IOException, ApiError {
 		for (RemoteEntry entry : folder.children()) {
 			if (entry.isFile()) {
-				RemoteFile remoteFile = entry.asFile();
+				System.out.println(entry.id());
+				long fileId = Long.parseLong(entry.id().replaceFirst("^f", ""));
+				RemoteFile remoteFile = apiClient.loadFile(fileId).execute();
 				System.out.println(remoteFile.name() + "["+remoteFile.id()+"]" + "->" + remoteFile.hash());
-				System.out.println(Long.parseLong(remoteFile.id().replaceFirst("^f", "")));
+				
+				Map<String, String> checksums = apiClient.checksumFile(fileId).execute();
+				System.out.println(checksums);
+				Map<String, String> checksums2 = apiClient.checksumFile("/Getting started with pCloud.pdf").execute();
+				System.out.println(checksums2);
+
+				remoteFile = entry.asFile();
+				System.out.println(remoteFile.name() + "["+remoteFile.id()+"]" + "->" + remoteFile.hash());
+				fileId = Long.parseLong(remoteFile.id().replaceFirst("^f", ""));
+				System.out.println(fileId);
 				UserInfo userInfo = apiClient.getUserInfo().execute();
 				System.out.println(userInfo.email());
 			}
