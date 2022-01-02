@@ -23,14 +23,16 @@ import de.hechler.experiments.jfxstarter.tools.StopWatch;
 
 public class PCloudApiMain {
 
-	private final static String ENV_FILENAME = ".env";
+	private final static String ENVIRONMENT = "dev";
+	
+	private final static String CONFIG_FILENAME = ".env-"+ENVIRONMENT;
 
-	private final static String OUT_FILE = "logs/pcloud-scan-$NOW.csv";
+	private final static String OUT_FILE = "logs/pcloud-"+ENVIRONMENT+"-scan-$NOW.csv";
 	
 	private static PCloudConfig config;
 	public static PCloudConfig getConfig() {
 		if (config == null) {
-			config = new PCloudConfig(ENV_FILENAME);
+			config = new PCloudConfig(CONFIG_FILENAME);
 		}
 		return config;
 	}

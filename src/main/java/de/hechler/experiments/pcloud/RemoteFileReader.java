@@ -34,6 +34,7 @@ public class RemoteFileReader {
 	private void readRecursive(RemoteFolder folder) {
 		if (System.currentTimeMillis()-lastProgress > 15000) {
 			System.out.println(store.size()+" - "+folder.name());
+			lastProgress = System.currentTimeMillis();
 		}
 		FileFolderInfoDAO data = FileFolderInfoDAO.createFolderInfo(
 				id2long(folder.id()), folder.parentFolderId(), folder.name(), 

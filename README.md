@@ -1,6 +1,11 @@
 # pcloud-api-test
 Test application for the pCloud Java SDK https://docs.pcloud.com/sdks/java.html
 
+# How to get the client-ID?
+
+create a new app under: https://docs.pcloud.com/my_apps/
+
+
 
 # How to get an access token (oauth2)
 
