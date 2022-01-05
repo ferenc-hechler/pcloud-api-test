@@ -79,7 +79,7 @@ public class RemoteFileUpdater {
 				}
 				try {
 					if (vFile.sha256 == null) {
-						System.out.println("--> GETTING SHA-256 FOR "+entry.name());
+						//System.out.println("--> GETTING SHA-256 FOR "+entry.name());
 						vFile.sha256 = apiClient.checksumFile(fileID).execute().get("SHA-256");
 					}
 				} catch (ApiError | IOException e) {
